@@ -4,7 +4,7 @@
   "description": "server side code for the cinema ticket booking system",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "Hiskel Kelemework",
   "license": "ISC",
