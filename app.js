@@ -34,4 +34,8 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/time', (req, res) => {
+    res.json({date: new Date()});
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
