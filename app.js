@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 // let mongoose = require('mongoose');
 
 const app = express();
@@ -25,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/model', (req, res) => {
-    res.sendFile('./models/movie.js');
+    res.sendFile(path.join(__dirname, 'models', 'movie.js'));
 });
 
 const port = process.env.PORT || 3000;
