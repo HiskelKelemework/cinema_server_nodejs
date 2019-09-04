@@ -24,5 +24,9 @@ app.get('/', (req, res) => {
     res.json({dir: __dirname});
 });
 
+app.get('/model', (req, res) => {
+    res.sendFile('./models/movie.js');
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`app listening on port ${port}!`))
