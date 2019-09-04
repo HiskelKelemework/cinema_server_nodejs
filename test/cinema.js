@@ -6,12 +6,13 @@ mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+db.once('open', async function() {
     console.log('connected to test db');
-    addCinema();
+    // await addCinema();
+    db.close();
 });
 
-function addCinema() {
+async function addCinema() {
     let cinema = new Cinema({
         name: 'Alem Cinema',  // renamed from title
         // halls: [hall_schema],
@@ -32,16 +33,16 @@ function addCinema() {
     const halls = [[55, 7], [40, 10]];
     halls.forEach((each) => {
         cinema.halls.push({
+            name: 'hall name',
             normal_seats: each[0],
             vip_seats: each[1],
         });
     });
-
-    cinema.save((err, result) => {
-        if (err) console.log(err);
-        else {
-            console.log(result);
-        }
-    });
-
+    try {
+        await cinema.save();
+        console.log('added successfully');
+    } catch (err) {
+        console.log(err);
+    }
 }
+
